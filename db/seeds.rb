@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+require 'csv'
+CSV.foreach(Rails.root.join("db/seeds_data/items.csv"), headers: true) do |row|
+  Item.create(:title => row[0], :category => row[1], :price => row[2], :description => row[3], :id => row[4], :poster_url => row[5])
+end
