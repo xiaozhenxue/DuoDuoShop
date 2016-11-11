@@ -26,6 +26,9 @@ gem 'jquery-rails'
 
 gem 'devise'
 
+gem 'redis', '~> 3.0.1'
+gem 'hiredis', '~> 0.4.5'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
