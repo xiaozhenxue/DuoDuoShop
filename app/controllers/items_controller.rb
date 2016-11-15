@@ -10,8 +10,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  def check_all
+    @items = Item.all
+  end
+
   # GET /items/1
-  # GET /items/1.json
+  # GET /items/1.jsoncheckAll
   def show
     @item = Item.find(params[:id])
 

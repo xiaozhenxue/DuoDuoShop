@@ -7,9 +7,6 @@
     <li class="orbit-slide is-active">
       <img src="https://images-na.ssl-images-amazon.com/images/G/01/kindle/merch/2016/Tab/Sept/FireHD8_Fire/G-F-GW-d-US-1500x300-2._CB278917277_.jpg">
     </li>
-    <li class="orbit-slide">
-      <img src="https://images-na.ssl-images-amazon.com/images/G/01/kindle/merch/2016/Tab/Sept/FireHD8_Fire/G-F-GW-d-US-1500x300-2._CB278917277_.jpg">
-    </li>
   </ul>
 </div>
 
@@ -19,31 +16,17 @@
 </div>
 
 
+
 <div class="row small-up-2 large-up-4">
+
+  <% @items.each do |item| %>
   <div class="column">
-    <img class="thumbnail" src="https://images-na.ssl-images-amazon.com/images/I/61eeheMq%2BBL._UY575_.jpg">
-    <h5>Gucci, all color</h5>
-    <p>$80</p>
+    <img class="thumbnail" src=<%= item.poster_url%>>
+    <h5><%= item.description%></h5>
+    <p>Our Price: $<%= item.price%></p>
     <a href="#" class="button expanded">Buy</a>
   </div>
-  <div class="column">
-    <img class="thumbnail" src="https://images-na.ssl-images-amazon.com/images/I/51gLcd2ERbL._UX679_.jpg">
-    <h5>Gucci, black</h5>
-    <p>$10</p>
-    <a href="#" class="button expanded">Buy</a>
-  </div>
-  <div class="column">
-    <img class="thumbnail" src="https://images-na.ssl-images-amazon.com/images/I/91qLZ5mU6XL._UX575_.jpg">
-    <h5>Mk, Eget</h5>
-    <p>$60</p>
-    <a href="#" class="button expanded">Buy</a>
-  </div>
-  <div class="column">
-    <img class="thumbnail" src="https://images-na.ssl-images-amazon.com/images/I/81zvO3EJpzL._SX522SX522_SY615_CR,0,0,522,615_PIbundle-4,TopRight,0,0_SX522_SY615_CR,0,0,522,615_SH20_.jpg">
-    <h5>powder, stage 1</h5>
-    <p>$70</p>
-    <a href="#" class="button expanded">Buy</a>
-  </div>
+  <% end %>
 </div>
 
 
@@ -92,61 +75,3 @@
 </div>
 
 
-<div class="column">
-  <ul class="movies-grid no-bullet row">
-    <% @items.each do |item| %>
-        <li class="large-3 medium-4 small-12 column">
-          <div class="movie-card padly">
-            <%= link_to item, class: "poster" do %>
-                <%= image_tag item.poster %>
-            <% end %>
-            <div class="movie-info ell glassy-bg padmy padlx">
-              <div class="title">
-                <h6><%= item.title %> <span>(<%= item.category %>)</span></h6>
-              </div>
-              <p class="left price label movie-label radius">$ <%= item.price %></p>
-              <%= link_to item.imdb, class: "right" do %>
-                  <%= image_tag asset_path("imdb_logo.png") %>
-              <% end %>
-            </div>
-          </div>
-        </li>
-    <% end %>
-  </ul>
-</div>
-
-
-<h1>Listing items</h1>
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Category</th>
-    <th>Price</th>
-    <th>Description</th>
-    <th>Id</th>
-    <th>Poster</th>
-    <th>Poster url</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-  <% @items.each do |item| %>
-      <tr>
-        <td><%= item.title %></td>
-        <td><%= item.category %></td>
-        <td><%= item.price %></td>
-        <td><%= item.description %></td>
-        <td><%= item.id %></td>
-        <td><%= item.poster %></td>
-        <td><%= item.poster_url %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-  <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Item', new_item_path %>

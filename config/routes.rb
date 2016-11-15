@@ -59,6 +59,9 @@ DuoDuoShop::Application.routes.draw do
   resources :items, only: [:show, :index]
   devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
 
+
+  get 'check_all' => 'items#check_all'
+
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
